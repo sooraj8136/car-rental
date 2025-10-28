@@ -4,11 +4,12 @@ const connectDB = require('./config/db')
 var cookieParser = require('cookie-parser')
 const cors = require('cors');
 const apiRouter = require('./routes')
+require('dotenv').config()   // Added
 
 const app = express()
 
 connectDB()
-app.use(express.json());
+app.use(express.json());  // position chnaged
 
 app.use(
     cors({
@@ -19,6 +20,10 @@ app.use(
 );
 
 app.use(cookieParser())
+
+app.get("/", (req, res, next) => {
+    res.json("Hello world");
+});
 
 app.use("/api", apiRouter)
 
