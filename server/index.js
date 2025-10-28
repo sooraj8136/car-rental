@@ -8,6 +8,7 @@ const apiRouter = require('./routes')
 const app = express()
 
 connectDB()
+app.use(express.json());
 
 app.use(
     cors({
@@ -17,14 +18,13 @@ app.use(
     })
 );
 
-app.use(express.json());
 app.use(cookieParser())
 
 app.use("/api", apiRouter)
 
-// app.all("*", (req, res) => {
-//     return res.status(404).json({ message: "End-point doesn't exist" })
-// })
+app.all("*", (req, res) => {
+    return res.status(404).json({ message: "End-point doesn't exist" })
+})
  
 app.listen(process.env.PORT, (err) => {
     if (err) {
