@@ -13,17 +13,9 @@ app.use(express.json());  // position chnaged
 
 app.use(
     cors({
-        // origin: ["http://localhost:5173" , "https://car-rental-client-topaz.vercel.app"],
-        // credentials: true, 
-        // methods: ["GET", "POST", "PUT", "DELETE"] 
-        origin: [
-            "http://localhost:5173",
-            "https://car-rental-client-topaz.vercel.app"
-        ],
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"]
-
+        origin: ["http://localhost:5173" , "https://car-rental-client-topaz.vercel.app"],
+        credentials: true, 
+        methods: ["GET", "POST", "PUT", "DELETE"]
     })
 );
 
@@ -38,7 +30,7 @@ app.use("/api", apiRouter)
 app.all("*", (req, res) => {
     return res.status(404).json({ message: "End-point doesn't exist" })
 })
-
+ 
 app.listen(process.env.PORT, (err) => {
     if (err) {
         console.log(err)
