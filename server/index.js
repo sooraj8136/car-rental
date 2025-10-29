@@ -9,6 +9,7 @@ require('dotenv').config()   // Added
 const app = express()
 
 connectDB()
+
 app.use(express.json());  // position chnaged
 
 app.use(
