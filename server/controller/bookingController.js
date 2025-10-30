@@ -141,20 +141,6 @@ const getAllBooking = async (req, res) => {
     }
 };
 
-// const getUserBookings = async (req, res) => {
-//     try {
-//         const userId = req.user?.id;
-//         console.log(userId, '---User ID')
-//         const bookings = await BookingDb.find({ userId: userId })
-//             .populate("carId", "brand model year rentalPricePerDay");
-
-//         res.status(200).json({ message: "User Booking fetched successfully", data: bookings });
-//     } catch (error) {
-//         console.error("Error fetching user bookings:", error);
-//         res.status(500).json({ success: false, message: "Internal Server Error", });
-//     }
-// };
-
 const getUserBookings = async (req, res) => {
     try {
         const userId = req.user?.id;
