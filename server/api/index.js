@@ -48,46 +48,38 @@ const dotenv = require("dotenv");
 const connectDB = require("../config/db");
 const apiRouter = require("../routes");
 
-dotenv.config();
+// ✅ Load .env before anything else that depends on it
+dotenv.config();  
 
 const app = express();
 
-// Connect to MongoDB only once
-(async () => {
-  try {
-    await connectDB();
-    console.log("✅ MongoDB connected successfully");
-  } catch (err) {
-    console.error("❌ MongoDB connection failed:", err.message);
-  }
-})();
+// ✅ Connect to DB after env is loaded
+connectDB();
 
-// Middleware
+// ✅ Middleware
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://car-rental-client-lyart.vercel.app"
-    ],
+    origin: process.env.CLIENT_URL,
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"]
   })
 );
-app.use(cookieParser());
 
-// Test route
-app.get("/", (req, res) => {
-  res.json({ message: "Hello world" });
-});
-
-// API routes
+// ✅ Routes
 app.use("/api", apiRouter);
 
-// 404 handler
-app.all("*", (req, res) => {
-  return res.status(404).json({ message: "End-point doesn't exist" });
+// ✅ Basic root route to avoid 500 error
+app.get("/", (req, res) => {
+  res.send("Server is running ✅");
 });
 
-// ❌ Do NOT use app.listen() — Vercel handles that
-module.exports = app;
+// ✅ Handle missing favicon requests gracefully
+app.get("/favicon.ico", (req, res) => res.status(204).end());
+app.get("/favicon.png", (req, res) => res.status(204).end());
+
+// ✅ Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
