@@ -88,19 +88,20 @@
 
 
 
-require('dotenv').config();
-const express = require('express');
-const connectDB = require('../config/db');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const apiRouter = require('../routes');
+const express = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
+const connectDB = require("../config/db");
+const apiRouter = require("../routes");
+
+dotenv.config(); // only once!
 
 const app = express();
 
-// Connect to MongoDB
+// Connect DB
 connectDB();
 
-// Middlewares
 app.use(express.json());
 app.use(
   cors({
@@ -109,24 +110,24 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
+
 app.use(cookieParser());
 
-// Routes
 app.get("/", (req, res) => {
-  res.json("Hello world");
+  res.json("Hello from Car Rental API");
 });
 
 app.use("/api", apiRouter);
 
 app.all("*", (req, res) => {
-  res.status(404).json({ message: "End-point doesn't exist" });
+  return res.status(404).json({ message: "End-point doesn't exist" });
 });
 
-// Server listener (optional for local dev only)
-if (process.env.PORT) {
-  app.listen(process.env.PORT, () => {
-    console.log(`Server running on port ${process.env.PORT}`);
-  });
-}
+// ✅ Export for Vercel
+module.exports = app;
 
-module.exports = app; // 👈 this export is required for Vercel serverless
+// ✅ Start server locally only
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
