@@ -1,43 +1,42 @@
-// require('dotenv').config()
-// const express = require('express')
-// const connectDB = require('./config/db')
-// var cookieParser = require('cookie-parser')
-// const cors = require('cors');
-// const apiRouter = require('./routes')
-// require('dotenv').config()   // Added
+require('dotenv').config()
+const express = require('express')
+const connectDB = require('./config/db')
+var cookieParser = require('cookie-parser')
+const cors = require('cors');
+const apiRouter = require('./routes')
 
-// const app = express()
+const app = express()
 
-// connectDB()
-// app.use(express.json());  // position chnaged
+connectDB()
+app.use(express.json());  // position chnaged
 
-// app.use(
-//     cors({
-//         origin: ["http://localhost:5173", "https://car-rental-client-lyart.vercel.app"],
-//         credentials: true,
-//         methods: ["GET", "POST", "PUT", "DELETE"]
-//     })
-// );
+app.use(
+    cors({
+        origin: ["http://localhost:5173", "https://car-rental-client-lyart.vercel.app"],
+        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"]
+    })
+);
 
-// app.use(cookieParser())
+app.use(cookieParser())
 
-// app.get("/", (req, res, next) => {
-//     res.json("hello world");
-// });
+app.get("/", (req, res, next) => {
+    res.json("hello world");
+});
 
-// app.use("/api", apiRouter)
+app.use("/api", apiRouter)
 
-// app.all("*", (req, res) => {
-//     return res.status(404).json({ message: "End-point doesn't exist" })
-// })
+app.all("*", (req, res) => {
+    return res.status(404).json({ message: "End-point doesn't exist" })
+})
 
-// app.listen(process.env.PORT, (err) => {
-//     if (err) {
-//         console.log(err)
-//     } else {
-//         console.log(`Server listening on port ${process.env.PORT}`)
-//     }
-// })
+app.listen(process.env.PORT, (err) => {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log(`Server listening on port ${process.env.PORT}`)
+    }
+})
 
 
 
@@ -88,46 +87,46 @@
 
 
 
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv");
-const connectDB = require("./config/db");
-const apiRouter = require("./routes");
+// const express = require("express");
+// const cors = require("cors");
+// const cookieParser = require("cookie-parser");
+// const dotenv = require("dotenv");
+// const connectDB = require("./config/db");
+// const apiRouter = require("./routes");
 
-dotenv.config(); // only once!
+// dotenv.config(); // only once!
 
-const app = express();
+// const app = express();
 
-// Connect DB
-connectDB();
+// // Connect DB
+// connectDB();
 
-app.use(express.json());
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "https://car-rental-client-lyart.vercel.app"],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+// app.use(express.json());
+// app.use(
+//   cors({
+//     origin: ["http://localhost:5173", "https://car-rental-client-lyart.vercel.app"],
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//   })
+// );
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.json("Hello from Car Rental API");
-});
+// app.get("/", (req, res) => {
+//   res.json("Hello from Car Rental API");
+// });
 
-app.use("/api", apiRouter);
+// app.use("/api", apiRouter);
 
-app.all("*", (req, res) => {
-  return res.status(404).json({ message: "End-point doesn't exist" });
-});
+// app.all("*", (req, res) => {
+//   return res.status(404).json({ message: "End-point doesn't exist" });
+// });
 
-// ✅ Export for Vercel
-module.exports = app;
+// // ✅ Export for Vercel
+// module.exports = app;
 
-// ✅ Start server locally only
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}
+// // ✅ Start server locally only
+// if (process.env.NODE_ENV !== "production") {
+//   const PORT = process.env.PORT || 3000;
+//   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// }
