@@ -1,7 +1,7 @@
 const { createCar, getAllCar, getCar, getOwnerCars, deleteOwnerCar, updateCar, searchCars } = require('../../controller/carController')
 const { upload } = require('../../middlewares/multer')
 const { ownerAuth } = require('../../middlewares/ownerAuth');
-const { userAuth } = require('../../middlewares/userAuth');
+
 const carRouter = require('express').Router()
 
 carRouter.post("/create-car", ownerAuth, upload.single("images"), createCar);

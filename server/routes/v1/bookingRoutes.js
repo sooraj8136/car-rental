@@ -2,6 +2,7 @@ const { createBooking, getAllBooking, getUserBookings, getOwnerBookings, cancelB
 const { adminAuth } = require('../../middlewares/adminAuth')
 const { ownerAuth } = require('../../middlewares/ownerAuth')
 const { userAuth } = require('../../middlewares/userAuth')
+
 const bookingRouter = require('express').Router()
 
 bookingRouter.post("/create-booking",userAuth , createBooking)

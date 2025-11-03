@@ -26,9 +26,9 @@ app.get("/", (req, res, next) => {
 
 app.use("/api", apiRouter)
 
-app.all("*", (req, res) => {
-    return res.status(404).json({ message: "End-point doesn't exist" })
-})
+// app.all("*", (req, res) => {
+//     return res.status(404).json({ message: "End-point doesn't exist" })
+// })
 
 app.listen(process.env.PORT, (err) => {
     if (err) {

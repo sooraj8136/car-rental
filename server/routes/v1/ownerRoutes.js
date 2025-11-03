@@ -2,6 +2,7 @@ const { signupOwner, loginOwner, ownerProfile, checkOwner, updateOwnerProfile, o
 const { adminAuth } = require('../../middlewares/adminAuth')
 const { ownerAuth } = require('../../middlewares/ownerAuth')
 const { userAuth } = require('../../middlewares/userAuth')
+
 const ownerRouter = require('express').Router()
 
 ownerRouter.post("/owner-signup", signupOwner)

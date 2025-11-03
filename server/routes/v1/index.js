@@ -1,4 +1,3 @@
-const v1Router = require('express').Router()
 const userRouter = require('./userRoutes')
 const adminRouter = require('./adminRoutes')
 const ownerRouter = require('./ownerRoutes')
@@ -6,6 +5,8 @@ const carRouter = require('./carRoutes')
 const bookingRouter = require('./bookingRoutes')
 const paymentRouter = require('./paymentRoutes')
 const reviewRouter = require('./reviewRoutes')
+
+const v1Router = require('express').Router()
 
 v1Router.use("/user", userRouter)
 v1Router.use("/admin", adminRouter)

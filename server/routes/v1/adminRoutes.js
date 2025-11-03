@@ -1,5 +1,6 @@
 const { signupAdmin, loginAdmin, checkAdmin, adminProfile, adminLogout, updateAdminProfile, changeAdminPassword, deleteOwnerByAdmin } = require("../../controller/adminController")
 const { adminAuth } = require("../../middlewares/adminAuth")
+
 const adminRouter = require('express').Router()
 
 adminRouter.post("/admin-signup", signupAdmin)

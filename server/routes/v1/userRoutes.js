@@ -1,6 +1,7 @@
 const { signup, login, userProfile, userLogout, checkUser, updateUserProfile, activateUser, deactivateUser, changePassword, userForgotPassword, userResetPassword, getAllUsers } = require('../../controller/userController')
 const { adminAuth } = require('../../middlewares/adminAuth')
 const { userAuth } = require('../../middlewares/userAuth')
+
 const userRouter = require('express').Router()
 
 userRouter.post("/signup", signup)
