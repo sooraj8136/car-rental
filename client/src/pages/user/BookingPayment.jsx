@@ -137,7 +137,7 @@ const BookingPayment = () => {
           )}
         </>
       ) : (
-        <Alert>Please wait...</Alert>
+        <Alert style={{marginTop:"150px"}}>Please wait...</Alert>
       )}
     </Container>
   );
