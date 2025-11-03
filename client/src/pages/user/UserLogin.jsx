@@ -160,14 +160,11 @@ const UserLogin = () => {
   return (
     <div
       style={{
-        backgroundImage:
-          "url('https://images.ctfassets.net/s699s7kh1jys/3vRxIaN45HiOejDXcdWaRK/0ec8a537ecf89284992ee6bb92315e71/porsche_911_wallpapers_carrera_gts_1_desktop.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
         minHeight: "100vh",
         display: "flex",
-        alignItems: "center",
         justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(135deg, #000000 0%, #434343 100%)", // subtle gradient
       }}
     >
       <Container className="d-flex justify-content-center align-items-center">
@@ -176,17 +173,29 @@ const UserLogin = () => {
           style={{
             width: "100%",
             maxWidth: "400px",
-            // backdropFilter: "blur(10px)",
+            background: "rgba(255, 255, 255, 0.05)",
+            backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            borderRadius: "12px",
             color: "#fff",
           }}
         >
-          <h3 className="mb-4 text-center text-font" style={{ letterSpacing: "2px" }}>Login your account</h3>
+          <h3
+            className="mb-4 text-center "
+            style={{
+              letterSpacing: "2px",
+              fontWeight: "700",
+              color: "#fff",
+            }}
+          >
+            Login to Your Account
+          </h3>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-3">
               <label htmlFor="email" className="form-label fw-semibold">
-                Email*
+                Email<span style={{ color: "red" }}>*</span>
               </label>
               <input
                 type="email"
@@ -195,13 +204,17 @@ const UserLogin = () => {
                 id="email"
                 placeholder="Enter your email"
                 required
-                style={{ borderRadius: 0 }}
+                style={{
+                  borderRadius: "6px",
+                  padding: "10px",
+                  fontSize: "0.95rem",
+                }}
               />
             </div>
 
             <div className="mb-3 position-relative">
               <label htmlFor="password" className="form-label fw-semibold">
-                Password*
+                Password<span style={{ color: "red" }}>*</span>
               </label>
               <input
                 type={showPassword ? "text" : "password"}
@@ -210,46 +223,80 @@ const UserLogin = () => {
                 id="password"
                 placeholder="Enter your password"
                 required
-                style={{ borderRadius: 0 }}
+                style={{
+                  borderRadius: "6px",
+                  padding: "10px",
+                  fontSize: "0.95rem",
+                }}
               />
               <small
                 onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: "absolute",
                   right: "12px",
-                  top: "38px",
+                  top: "43px",
                   cursor: "pointer",
                   fontSize: "0.85rem",
-                  color: "#060000ff",
-                  fontWeight: "500",
+                  color: "#000000ff",
+                  fontWeight: "600",
                 }}
               >
                 {showPassword ? "Hide" : "Show"}
               </small>
             </div>
 
-            <div className="d-grid  text-font">
-              <button type="submit" className="btn btn-dark" style={{ letterSpacing: "2px", borderRadius: 0 }}>
-                Sign In
+            <div className="d-grid ">
+              <button
+                type="submit"
+                className="btn btn-dark"
+                style={{
+                  letterSpacing: "2px",
+                  borderRadius: "8px",
+                  padding: "10px 0",
+                  fontWeight: "600",
+                  backgroundColor: "#000",
+                  border: "none",
+                  transition: "0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.backgroundColor = "#222")}
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#000")}
+              >
+                SIGN IN
               </button>
             </div>
           </form>
 
-          <div className="text-center mt-3">
-            <p style={{ marginBottom: "5px", color: "#fff", letterSpacing: "1px" }}>Don’t have an account?</p>
+          <div className="text-center mt-4">
+            <p
+              style={{
+                marginBottom: "5px",
+                color: "#ccc",
+                letterSpacing: "1px",
+              }}
+            >
+              Don’t have an account?
+            </p>
             <Link
               to={user.signup_route}
-              className="text-decoration-none text-light fw-bold"
-              style={{ letterSpacing: "2px", display: "block", marginTop: "5px" }}
+              className="text-decoration-none fw-bold"
+              style={{
+                letterSpacing: "2px",
+                color: "#ffffffff",
+                display: "block",
+                marginTop: "5px",
+                transition: "0.3s",
+              }}
+              onMouseOver={(e) => (e.target.style.color = "#000000ff")}
+              onMouseOut={(e) => (e.target.style.color = "#ffffffff")}
             >
-              SIGNUP
+              SIGN UP
             </Link>
           </div>
-
         </div>
       </Container>
     </div>
   );
+
 };
 
 export default UserLogin;

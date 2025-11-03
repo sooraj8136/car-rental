@@ -87,7 +87,7 @@ function Header() {
                                 as={Link}
                                 to="/login"
                                 variant="dark"
-                                className="me-md-4 mb-2 mb-md-0"
+                                className="me-md-2 mb-2 mb-md-0"
                                 style={{
                                     fontWeight: "600",
                                     letterSpacing: "0.5px",
@@ -96,7 +96,8 @@ function Header() {
                                     backgroundColor: "black",
                                     color: "white",
                                     border: "none",
-                                    fontSize: "13px"
+                                    fontSize: "13px",
+                                    paddingTop: "9px"
                                 }}
                             >
                                 LOGIN

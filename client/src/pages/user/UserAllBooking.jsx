@@ -77,7 +77,7 @@ const UserAllBooking = () => {
 
     return (
         <Container className="my-5">
-            <h3 className="mb-4 text-center ">MY BOOKINGS</h3>
+            <h3 className="mb-4 text-center" style={{marginTop:"150px"}}>MY BOOKINGS</h3>
             <Row>
                 {bookings.map((booking) => (
                     <Col key={booking._id} md={6} lg={4} className="mb-4">

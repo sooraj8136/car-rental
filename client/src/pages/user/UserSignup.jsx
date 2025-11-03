@@ -207,45 +207,56 @@ const UserSignup = () => {
   return (
     <div
       style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1520587210458-bd3bee813b97?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZG9kZ2V8ZW58MHx8MHx8fDA%3D')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
+        minHeight: "125vh",
         display: "flex",
-        alignItems: "center",
         justifyContent: "center",
+        alignItems: "center",
+        background: "linear-gradient(135deg, #000000 0%, #434343 100%)",
       }}
     >
       <Container className="d-flex justify-content-center align-items-center">
         <div
-          className="p-4 shadow-lg"
+          className="p-4 rounded shadow-lg"
           style={{
             width: "100%",
             maxWidth: "500px",
-            // background: "rgba(255,255,255,0.15)",
-            // backdropFilter: "blur(10px)",
+            background: "rgba(255, 255, 255, 0.05)",
+            backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            borderRadius: "12px",
             color: "#fff",
-            borderRadius: "0px", // sharp edges
           }}
         >
           <h2
-            className="text-center mb-4 text-font"
-            style={{ letterSpacing: "2px" }}
+            className="text-center mb-4 "
+            style={{
+              letterSpacing: "2px",
+              fontWeight: "700",
+              color: "#fff",
+            }}
           >
-            User Signup
+            Create Your Account
           </h2>
 
           {errorMessage && (
-            <Alert variant="danger" className="text-center">
+            <Alert
+              variant="danger"
+              className="text-center"
+              style={{
+                borderRadius: "8px",
+                fontSize: "0.9rem",
+              }}
+            >
               {errorMessage}
             </Alert>
           )}
 
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="name" className="mb-3">
-              <Form.Label>Full Name*</Form.Label>
+              <Form.Label className="fw-semibold">
+                Full Name<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your name"
@@ -253,38 +264,56 @@ const UserSignup = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                style={{ borderRadius: "0px" }}
+                style={{
+                  borderRadius: "6px",
+                  padding: "10px",
+                  fontSize: "0.95rem",
+                }}
               />
             </Form.Group>
 
             <Form.Group controlId="email" className="mb-3">
-              <Form.Label>Email Address*</Form.Label>
+              <Form.Label className="fw-semibold">
+                Email Address<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Enter your email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                style={{ borderRadius: "0px" }}
+                style={{
+                  borderRadius: "6px",
+                  padding: "10px",
+                  fontSize: "0.95rem",
+                }}
               />
             </Form.Group>
 
             <Form.Group controlId="mobile" className="mb-3">
-              <Form.Label>Mobile Number*</Form.Label>
+              <Form.Label className="fw-semibold">
+                Mobile Number<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter mobile number"
+                placeholder="Enter your mobile number"
                 name="mobile"
                 value={formData.mobile}
                 onChange={handleChange}
                 required
-                style={{ borderRadius: "0px" }}
+                style={{
+                  borderRadius: "6px",
+                  padding: "10px",
+                  fontSize: "0.95rem",
+                }}
               />
             </Form.Group>
 
             <Form.Group controlId="password" className="mb-4">
-              <Form.Label>Password*</Form.Label>
+              <Form.Label className="fw-semibold">
+                Password<span style={{ color: "red" }}>*</span>
+              </Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Enter a password (min 8 characters)"
@@ -292,24 +321,56 @@ const UserSignup = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                style={{ borderRadius: "0px" }}
+                style={{
+                  borderRadius: "6px",
+                  padding: "10px",
+                  fontSize: "0.95rem",
+                }}
               />
             </Form.Group>
 
             <Button
-              variant="dark"
               type="submit"
               disabled={loading}
-              className="w-100"
-              style={{ borderRadius: "0px", letterSpacing: "2px" }}
+              className="w-100 fw-semibold"
+              style={{
+                letterSpacing: "2px",
+                borderRadius: "8px",
+                padding: "10px 0",
+                fontWeight: "600",
+                backgroundColor: "#000",
+                border: "none",
+                color: "#fff",
+                transition: "0.3s",
+              }}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "#222")}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "#000")}
             >
-              {loading ? <Spinner animation="border" size="sm" /> : "SIGNUP"}
+              {loading ? <Spinner animation="border" size="sm" /> : "SIGN UP"}
             </Button>
-            <div className="text-center mt-3">
+
+            <div className="text-center mt-4">
+              <p
+                style={{
+                  marginBottom: "5px",
+                  color: "#ccc",
+                  letterSpacing: "1px",
+                }}
+              >
+                Already have an account?
+              </p>
               <Link
-                to={"/login"}
-                className="text-decoration-none text-light "
-                style={{ letterSpacing: "2px", display: "block", marginTop: "5px" }}
+                to="/login"
+                className="text-decoration-none fw-bold"
+                style={{
+                  color: "#0d6efd",
+                  letterSpacing: "2px",
+                  display: "block",
+                  marginTop: "5px",
+                  transition: "0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#000000ff")}
+                onMouseOut={(e) => (e.target.style.color = "#ffffffff")}
               >
                 SIGN IN
               </Link>
@@ -319,6 +380,7 @@ const UserSignup = () => {
       </Container>
     </div>
   );
+
 };
 
 export default UserSignup;
