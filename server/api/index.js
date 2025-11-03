@@ -22,7 +22,7 @@ app.use(
 app.use(cookieParser())
 
 app.get("/", (req, res, next) => {
-    res.json("Hello world");
+    res.json("hello world");
 });
 
 app.use("/api", apiRouter)
