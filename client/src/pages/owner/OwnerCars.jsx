@@ -28,7 +28,7 @@ const OwnerCars = () => {
     return (
       <div className="text-center mt-5">
         <Spinner animation="border" variant="primary" />
-        <p>Loading your cars...</p>
+        <p style={{marginTop:"100px"}}>Loading your cars...</p>
       </div>
     );
   }

@@ -50,7 +50,6 @@ const OwnerCarDetails = () => {
 
   return (
     <Container className="my-5">
-
       <Row>
         {/* Left Side: Car Details */}
         <Col lg={8}>
@@ -58,9 +57,8 @@ const OwnerCarDetails = () => {
             src={car.images?.[0]}
             alt={`${car.brand} ${car.model}`}
             className="img-fluid rounded mb-4"
-            style={{ maxHeight: "400px", objectFit: "cover", width: "100%", marginTop:"100px" }}
+            style={{ maxHeight: "400px", objectFit: "cover", width: "100%", marginTop: "100px" }}
           />
-
           <h2 className="fw-bold">{car.brand} {car.model}</h2>
 
           {/* Rental Price shown just below the title */}
@@ -98,7 +96,7 @@ const OwnerCarDetails = () => {
         {/* Right Side */}
         <Col lg={4}>
           <div className=" rounded p-4 mb-3">
-            <h5 className="fw-bold" style={{marginTop:"150px"}}>Booking Info</h5>
+            <h5 className="fw-bold" style={{ marginTop: "150px" }}>Booking Info</h5>
             <p className="text-muted">Bookings are disabled by default for owners.</p>
           </div>
 
@@ -106,11 +104,26 @@ const OwnerCarDetails = () => {
           <div className="d-grid">
             <Link
               to={`/owner/update-car/${car._id}`}
-              className="btn btn-outline-dark"
+              className="btn"
+              style={{
+                backgroundColor: "#000000ff",
+                color: "white",
+                transition: "all 0.4s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "#4c555eff";
+                e.target.style.transform = "scale(1.05)";
+                e.target.style.boxShadow = "0 0 10px rgba(0, 76, 147, 0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "#000000ff";
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "none";
+              }}
             >
               Edit Car
             </Link>
-            <br/>
+            <br />
             <DeleteCarButton carId={car._id} onSuccess={() => window.location.href = "/owner/owner-cars"} />
           </div>
         </Col>
